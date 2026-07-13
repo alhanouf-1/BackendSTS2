@@ -2,11 +2,12 @@ import redis.asyncio as aioredis
 from typing import AsyncGenerator
 from app.config.settings import settings
 
-# Create connection pool
+# Create connection pool with SSL bypass for cloud environments like Upstash
 redis_pool = aioredis.ConnectionPool.from_url(
     settings.REDIS_URL,
     max_connections=50,
-    decode_responses=True
+    decode_responses=True,
+    ssl_cert_reqs=None  # التعديل الهام جداً لمنع قطع الاتصال السحابي
 )
 
 def get_redis_client() -> aioredis.Redis:
