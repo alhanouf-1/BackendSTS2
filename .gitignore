@@ -1,0 +1,7 @@
+﻿.venv/
+.venvTest-Path/
+__pycache__/
+*.pyc
+.env
+storage/chromadb/chroma.sqlite3
+BackendSTS2/
